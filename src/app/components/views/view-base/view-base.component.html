@@ -1,0 +1,11 @@
+<div class="fade-in-fast">
+  <!-- title -->
+  <aw-view-title *ngIf="showPageTitle" [pageTitle]="pageTitle"></aw-view-title>
+  <!-- end title -->
+
+  <!-- content page -->
+  <div [ngClass]="cssContent">
+    <ng-content></ng-content>
+  </div>
+  <!-- end content page -->
+</div>
