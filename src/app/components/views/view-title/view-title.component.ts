@@ -14,7 +14,6 @@ export class ViewTitleComponent implements OnInit {
   constructor(private route: ActivatedRoute, private title: Title) {}
 
   ngOnInit(): void {
-    debugger;
     if (this.pageTitle) {
       this.setTitle(this.pageTitle);
     } else if ('title' in this.route.snapshot.data) {

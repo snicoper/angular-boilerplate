@@ -4,7 +4,8 @@ import { LayoutService } from '../../../services/_index';
 
 @Component({
   selector: 'aw-view-base',
-  templateUrl: './view-base.component.html'
+  templateUrl: './view-base.component.html',
+  styleUrls: ['./view-base.component.scss']
 })
 export class ViewBaseComponent implements OnDestroy {
   @Input() cssContent = 'container-fluid';

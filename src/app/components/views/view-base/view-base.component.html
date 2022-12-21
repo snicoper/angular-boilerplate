@@ -1,14 +1,14 @@
-<div class="fade-in-fast">
+<ng-container *ngIf="showNavbar">
+  <aw-navbar class="fade-in"></aw-navbar>
+</ng-container>
+
+<div class="fade-in-fast" [ngClass]="{ 'show-navbar': showNavbar }">
   <!-- title -->
   <aw-view-title *ngIf="showPageTitle" [pageTitle]="pageTitle"></aw-view-title>
   <!-- end title -->
 
-  <ng-container *ngIf="showNavbar">
-    <aw-navbar></aw-navbar>
-  </ng-container>
-
   <!-- content page -->
-  <div [ngClass]="cssContent">
+  <div [ngClass]="cssContent" class="pt-4">
     <ng-content></ng-content>
   </div>
   <!-- end content page -->
