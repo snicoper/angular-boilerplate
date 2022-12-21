@@ -1,23 +1,27 @@
+<!-- title -->
+<ng-container *ngIf="showPageTitle">
+  <aw-view-title [pageTitle]="pageTitle"></aw-view-title>
+</ng-container>
+<!-- end title -->
+
 <!-- navbar -->
 <ng-container *ngIf="showNavbar">
   <aw-navbar class="fade-in"></aw-navbar>
 </ng-container>
 <!-- end navbar -->
 
-<div [ngClass]="{ 'show-navbar': showNavbar, 'show-navbar-hide': !showNavbar }">
-  <!-- title -->
-  <aw-view-title *ngIf="showPageTitle" [pageTitle]="pageTitle"></aw-view-title>
-  <!-- end title -->
+<div class="d-flex flex-nowrap">
+  <!-- sidebar -->
+  <ng-container *ngIf="showSidebar">
+    <aw-sidebar [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }"></aw-sidebar>
+  </ng-container>
+  <!-- end sidebar -->
 
   <!-- content page -->
-  <div [ngClass]="cssContent" class="pt-4">
-    <!-- sidebar -->
-    <ng-container *ngIf="showSidebar">
-      <!-- <aw-sidebar></aw-sidebar> -->
-    </ng-container>
-    <!-- end sidebar -->
-
-    <ng-content></ng-content>
+  <div class="fade-in" [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }">
+    <div [ngClass]="cssContent">
+      <ng-content></ng-content>
+    </div>
   </div>
   <!-- end content page -->
 </div>
