@@ -6,22 +6,24 @@
 
 <!-- navbar -->
 <ng-container *ngIf="showNavbar">
-  <aw-navbar class="fade-in"></aw-navbar>
+  <aw-navbar></aw-navbar>
 </ng-container>
 <!-- end navbar -->
 
-<div class="d-flex flex-nowrap">
-  <!-- sidebar -->
-  <ng-container *ngIf="showSidebar">
-    <aw-sidebar [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }"></aw-sidebar>
-  </ng-container>
-  <!-- end sidebar -->
+<!-- sidebar -->
+<ng-container *ngIf="showSidebar">
+  <aw-sidebar [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }"></aw-sidebar>
+</ng-container>
+<!-- end sidebar -->
 
-  <!-- content page -->
-  <div class="fade-in" [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }">
-    <div [ngClass]="cssContent">
-      <ng-content></ng-content>
-    </div>
+<!-- content page -->
+<div class="fade-in" [ngClass]="{ 'visible-navbar': showNavbar, 'visible-navbar-hide': !showNavbar }">
+  <div [ngClass]="cssContent">
+    <ng-content></ng-content>
   </div>
-  <!-- end content page -->
+</div>
+<!-- end content page -->
+
+<div>
+  <aw-footer></aw-footer>
 </div>
