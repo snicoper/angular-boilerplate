@@ -3,6 +3,8 @@
   <aw-view-title *ngIf="showPageTitle" [pageTitle]="pageTitle"></aw-view-title>
   <!-- end title -->
 
+  <ng-container *ngIf="showNavbar">Mostrar navbar</ng-container>
+
   <!-- content page -->
   <div [ngClass]="cssContent">
     <ng-content></ng-content>
