@@ -9,6 +9,10 @@
 
   <!-- content page -->
   <div [ngClass]="cssContent" class="pt-4">
+    <ng-container *ngIf="showSidebar">
+      <!-- <aw-sidebar></aw-sidebar> -->
+    </ng-container>
+
     <ng-content></ng-content>
   </div>
   <!-- end content page -->
