@@ -1,4 +1,9 @@
 .show-navbar {
   margin-top: 40px;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
+}
+
+.show-navbar-hide {
+  margin-top: 0;
+  transition: all 0.3s;
 }
