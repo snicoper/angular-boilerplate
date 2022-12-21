@@ -6,9 +6,7 @@ import { LayoutService } from './../../services/layout.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  constructor(private layoutService: LayoutService) {
-    this.layoutService.setValueNavbar(false);
-  }
+  constructor(private layoutService: LayoutService) {}
 
   handleToggleNavbar(): void {
     this.layoutService.toggleNavbar();
