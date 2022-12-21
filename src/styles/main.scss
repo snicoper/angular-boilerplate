@@ -1,0 +1,28 @@
+// Variables.
+@import "variables";
+
+// Font-awesome.
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
+
+// Bootstrap.
+@import "bootstrap/scss/bootstrap";
+
+// ngx-toastr.
+@import "ngx-toastr/toastr-bs5-alert";
+
+// ng-select.
+@import "@ng-select/ng-select/scss/default.theme";
+
+// Mixins.
+// @import "mixins/main";
+
+@import "base";
+
+// Components.
+@import "components/main.scss";
+
+// Apps.
+// @import "vendor/main";
