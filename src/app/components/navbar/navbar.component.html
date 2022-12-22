@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-md py-2">
   <div class="container-fluid">
+    <span (click)="toggleSidebarState()" [ngClass]="{ 'text-muted': !sidebarState }" class="fa-solid fa-bars"></span>
+
     <a class="navbar-brand cursor-pointer" routerLink="/">{{ siteName }}</a>
     <button
       class="navbar-toggler"

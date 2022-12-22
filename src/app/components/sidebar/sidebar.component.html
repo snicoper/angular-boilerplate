@@ -1,0 +1,11 @@
+<div class="border-right shadow-md" id="sidebar-wrapper" [ngClass]="sidebarState ? 'show' : 'hide'">
+  <div class="sidebar-heading">Sidebar</div>
+  <div class="list-group list-group-flush">
+    <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action">Dashboard</a>
+    <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action">Shortcuts</a>
+    <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action">Overview</a>
+    <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action">Events</a>
+    <a routerLink="/auth/login" routerLinkActive="active" class="list-group-item list-group-item-action">Login</a>
+    <a (click)="handleClick()" class="list-group-item list-group-item-action cursor-pointer">Status</a>
+  </div>
+</div>

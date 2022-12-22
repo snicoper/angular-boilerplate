@@ -1,0 +1,65 @@
+@import "variables-bootstrap";
+
+$primary-sidebar: lighten($primary, 5);
+$font-color: white;
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  border-right: 1px solid $gray-300;
+  border-bottom: 1px solid $gray-300;
+  color: $font-color;
+  background-color: $primary-sidebar;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+
+  .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .list-group {
+    width: 15rem;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+    background-color: $primary-sidebar;
+    color: $font-color;
+
+    &.active {
+      background-color: lighten($primary-sidebar, 5);
+    }
+
+    &:hover {
+      background-color: darken($primary-sidebar, 2);
+      color: darken($font-color, 15);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  .show {
+    margin-left: 0 !important;
+  }
+
+  .hide {
+    margin-left: -15rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .show {
+    margin-left: -15rem !important;
+  }
+
+  .hide {
+    margin-left: -0 !important;
+  }
+}
