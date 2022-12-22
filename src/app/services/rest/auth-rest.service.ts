@@ -6,5 +6,6 @@ import { ApiRestBaseService } from './api-rest-base.service';
 export class AuthRestService extends ApiRestBaseService {
   constructor(protected override http: HttpClient) {
     super(http);
+    this.baseUrl = `${this.baseUrl}/identity`;
   }
 }
