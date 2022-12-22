@@ -1,25 +1,39 @@
-<aw-view-base>
+<aw-view-base [showNavbar]="false" [showSidebar]="false" [showFooter]="false">
   <div class="form-login w-100 m-auto mt-5">
-    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-      <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+    <aw-card extraCss="p-4">
+      <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+        <h1 class="h3 mb-3 fw-normal"><span class="fa-solid fa-user"></span> Iniciar sesión</h1>
+        <hr />
 
-      <div class="form-floating">
-        <input
-          formControlName="userName"
-          type="email"
-          class="form-control"
-          id="username"
-          placeholder="name@example.com"
-        />
-        <label for="username">Nombre de usuario</label>
-      </div>
-      <div class="form-floating mt-1">
-        <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" />
-        <label for="password">Contraseña</label>
-      </div>
+        <!-- userName -->
+        <div class="form-floating">
+          <input
+            formControlName="userName"
+            type="email"
+            class="form-control"
+            id="username"
+            placeholder="name@example.com"
+          />
+          <label for="username">Nombre de usuario</label>
+        </div>
+        <!-- end userName -->
 
-      <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Identificarse</button>
-      <button routerLink="/" class="w-100 btn btn-lg btn-primary mt-2" type="submit">Volver</button>
-    </form>
+        <!-- password -->
+        <div class="form-floating mt-1">
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Contraseña"
+          />
+          <label for="password">Contraseña</label>
+        </div>
+        <!-- end password -->
+
+        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Identificarse</button>
+        <button routerLink="/" class="w-100 btn btn-lg btn-primary mt-2" type="submit">Volver</button>
+      </form>
+    </aw-card>
   </div>
 </aw-view-base>

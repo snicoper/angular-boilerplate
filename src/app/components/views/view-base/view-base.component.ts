@@ -12,9 +12,10 @@ export class ViewBaseComponent implements OnDestroy {
   @Input() showPageTitle = true;
   @Input() pageTitle = '';
 
-  showNavbar = true;
-  showSidebar = true;
-  showFooter = true;
+  // States.
+  @Input() showNavbar = true;
+  @Input() showSidebar = true;
+  @Input() showFooter = true;
 
   private destroy$ = new Subject<void>();
 
