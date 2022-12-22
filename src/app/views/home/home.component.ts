@@ -11,4 +11,12 @@ export class HomeComponent {
   handleToggleNavbar(): void {
     this.layoutService.toggleNavbar();
   }
+
+  handleToggleSidebar(): void {
+    this.layoutService.toggleSidebar();
+  }
+
+  handleToggleFooter(): void {
+    this.layoutService.toggleFooter();
+  }
 }
