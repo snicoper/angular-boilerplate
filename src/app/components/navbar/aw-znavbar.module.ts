@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar.component';
-import { SidebarService } from './sidebar.service';
+import { SidebarService } from '../sidebar/sidebar.service';
+import { NavbarComponent } from './navbar.component';
 
 @NgModule({
-  declarations: [SidebarComponent],
+  declarations: [NavbarComponent],
   imports: [CommonModule, RouterModule],
-  exports: [SidebarComponent],
+  exports: [NavbarComponent],
   providers: [SidebarService]
 })
-export class SidebarModule {}
+export class AwNavbarModule {}
