@@ -14,6 +14,7 @@ export class ViewBaseComponent implements OnDestroy {
 
   showNavbar = true;
   showSidebar = true;
+  showFooter = true;
 
   private destroy$ = new Subject<void>();
 
@@ -33,6 +34,10 @@ export class ViewBaseComponent implements OnDestroy {
 
     this.layoutService.showSidebar.pipe(takeUntil(this.destroy$)).subscribe({
       next: (result: boolean) => (this.showSidebar = result)
+    });
+
+    this.layoutService.showFooter.pipe(takeUntil(this.destroy$)).subscribe({
+      next: (result: boolean) => (this.showFooter = result)
     });
   }
 }

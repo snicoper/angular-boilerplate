@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class LayoutService {
   private showNavbar$ = new BehaviorSubject<boolean>(true);
   private showSidebar$ = new BehaviorSubject<boolean>(true);
+  private showFooter$ = new BehaviorSubject<boolean>(true);
 
   /** Navbar functions. */
   get showNavbar(): Observable<boolean> {
@@ -38,5 +39,22 @@ export class LayoutService {
 
   setValueSidebar(value: boolean): void {
     this.showSidebar$.next(value);
+  }
+
+  /** Footer functions. */
+  get showFooter(): Observable<boolean> {
+    return this.showFooter$.asObservable();
+  }
+
+  get showFooterValue(): boolean {
+    return this.showFooter$.getValue();
+  }
+
+  toggleFooter(): void {
+    this.showFooter$.next(!this.showFooterValue);
+  }
+
+  setValueFooter(value: boolean): void {
+    this.showFooter$.next(value);
   }
 }

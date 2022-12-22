@@ -1,5 +1,7 @@
+@import "variables";
+
 .visible-navbar {
-  margin-top: 53px;
+  margin-top: $navbar-margin;
   transition: all 0.3s;
 }
 

@@ -1,15 +1,10 @@
-@import "variables-bootstrap";
-
-$primary-sidebar: lighten($primary, 5);
-$font-color: white;
+@import "variables";
 
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
-  border-right: 1px solid $gray-300;
-  border-bottom: 1px solid $gray-300;
-  color: $font-color;
-  background-color: $primary-sidebar;
+  color: $text-color-alter;
+  background-color: $color-alter;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
@@ -26,16 +21,16 @@ $font-color: white;
 
   .list-group-item {
     cursor: pointer;
-    background-color: $primary-sidebar;
-    color: $font-color;
+    background-color: $color-alter;
+    color: $text-color-alter;
 
     &.active {
-      background-color: lighten($primary-sidebar, 5);
+      background-color: lighten($color-alter, 5);
     }
 
     &:hover {
-      background-color: darken($primary-sidebar, 2);
-      color: darken($font-color, 15);
+      background-color: darken($color-alter, 2);
+      color: darken($text-color-alter, 15);
     }
   }
 }
