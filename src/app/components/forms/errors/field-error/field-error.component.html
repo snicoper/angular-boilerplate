@@ -1,15 +1,9 @@
-<ng-container
-  *ngIf="
-    (submitted && formHasErrors()) ||
-    controlHasErrors() ||
-    getBadRequestErrors()
-  "
->
+<ng-container *ngIf="(submitted && formHasErrors()) || controlHasErrors() || getBadRequestErrors()">
   <div class="small text-danger mt-1 pl-1">
     <!-- Errores Angular. -->
     <span [ngSwitch]="true">
       <ng-container *ngSwitchCase="control?.errors?.required">
-        <div></div>
+        <div>Campo requerido</div>
       </ng-container>
 
       <ng-container *ngSwitchCase="control?.errors?.email">
@@ -17,14 +11,6 @@
       </ng-container>
 
       <ng-container *ngSwitchCase="control?.errors?.noPasswordMatch">
-        <div></div>
-      </ng-container>
-
-      <ng-container *ngSwitchCase="control?.errors?.startGreaterThanFinish">
-        <div></div>
-      </ng-container>
-
-      <ng-container *ngSwitchCase="control?.errors?.colorHexadecimal">
         <div></div>
       </ng-container>
 

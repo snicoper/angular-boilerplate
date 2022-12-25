@@ -1,7 +1,7 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
-import { BadRequest } from '../../../models/types';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { BadRequest } from '../../../../models/types/_index';
 
 @Component({
   selector: 'aw-field-error',
@@ -21,12 +21,10 @@ export class FieldErrorComponent implements OnInit {
     this.control = this.form.get(this.fieldName) as FormGroup;
   }
 
-  formHasErrors(): boolean {
+  formHasErrors(): boolean | ValidationErrors | null | undefined {
     return (
-      this.submitted && this.form && this.form.dirty
-
-      // ||
-      // (this.form.touched && this.form[this.fieldName] && this.form[this.fieldName].errors)
+      (this.submitted && this.form && this.form.dirty) ||
+      (this.form.touched && this.form.get(this.fieldName) && this.form.get(this.fieldName)?.errors)
     );
   }
 
@@ -38,9 +36,10 @@ export class FieldErrorComponent implements OnInit {
     return !!(validateRules || (this.submitted && this.control?.errors));
   }
 
-  getBadRequestErrors(): string[] | void {
+  getBadRequestErrors(): string | void | undefined {
     if (this.badRequest && this.badRequest.status === HttpStatusCode.BadRequest) {
-      // return this.badRequest.errors[this.fieldName];
+      const index = this.badRequest.errors.indexOf(this.fieldName);
+      return this.badRequest.errors[index];
     }
   }
 }
