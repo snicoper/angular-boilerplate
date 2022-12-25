@@ -73,14 +73,6 @@ export class JwtTokenService {
     return this.token;
   }
 
-  logOut(): void {
-    this.setAuthValue(false);
-    this.localStorageService.remove('token');
-    this.token = '';
-    this.tokenDecode = {};
-    this.isTokenExpired = true;
-  }
-
   getRole(role: string): string[] | string | null {
     const roles = this.getRoles();
     const index = roles.indexOf(role);
@@ -92,11 +84,42 @@ export class JwtTokenService {
     return null;
   }
 
-  getRoles(): string[] {
-    return this.tokenDecode['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-  }
-
   isInRole(role: string): boolean {
     return this.getRole(role) ? true : false;
+  }
+
+  getRoles(): string[] {
+    const key = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
+    if (!this.token || !(key in this.tokenDecode)) {
+      return [];
+    }
+
+    return this.tokenDecode[key];
+  }
+
+  getName(): string {
+    const key = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name';
+    if (!this.token || !(key in this.tokenDecode)) {
+      return '';
+    }
+
+    return this.tokenDecode[key];
+  }
+
+  getSid(): string {
+    const key = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid';
+    if (!this.token || !(key in this.tokenDecode)) {
+      return '';
+    }
+
+    return this.tokenDecode[key];
+  }
+
+  logOut(): void {
+    this.setAuthValue(false);
+    this.localStorageService.remove('token');
+    this.token = '';
+    this.tokenDecode = {};
+    this.isTokenExpired = true;
   }
 }

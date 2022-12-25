@@ -9,6 +9,7 @@ import { SidebarService } from './sidebar.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnDestroy {
+  authState = false;
   sidebarState: boolean;
 
   private destroy$ = new Subject<void>();
@@ -32,13 +33,13 @@ export class SidebarComponent implements OnDestroy {
     this.jwtTokenService.logOut();
   }
 
-  getAuthStatus(): boolean {
-    return this.jwtTokenService.isAuthValue;
-  }
-
   private eventListener(): void {
     this.sidebarService.sidebarState.pipe(takeUntil(this.destroy$)).subscribe({
       next: (result: boolean) => (this.sidebarState = result)
+    });
+
+    this.jwtTokenService.isAuth.pipe(takeUntil(this.destroy$)).subscribe({
+      next: (result: boolean) => (this.authState = result)
     });
   }
 }

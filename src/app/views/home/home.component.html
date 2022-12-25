@@ -3,4 +3,8 @@
   <button (click)="handleToggleNavbar()" class="btn btn-outline-primary">Navbar</button>
   <button (click)="handleToggleSidebar()" class="btn btn-outline-warning ms-2">Sidebar</button>
   <button (click)="handleToggleFooter()" class="btn btn-outline-success ms-2">Footer</button>
+
+  <ng-container *ngIf="getUserName()">
+    <div class="mt-3">User name: {{ getUserName() }}</div>
+  </ng-container>
 </aw-view-base>

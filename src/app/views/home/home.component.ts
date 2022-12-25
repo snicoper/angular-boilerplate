@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JwtTokenService } from './../../services/jwt-token.service';
 import { LayoutService } from './../../services/layout.service';
 
 @Component({
@@ -6,7 +7,11 @@ import { LayoutService } from './../../services/layout.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  constructor(private layoutService: LayoutService) {}
+  constructor(private layoutService: LayoutService, private jwtTokenService: JwtTokenService) {}
+
+  getUserName(): string {
+    return this.jwtTokenService.getName();
+  }
 
   handleToggleNavbar(): void {
     this.layoutService.toggleNavbar();
