@@ -28,12 +28,14 @@ export const raiseError = (message: string): void => {
 };
 
 /**
- * Pinta un console.log() solo si se isDebug es true.
+ * Pinta un console.log() solo si isDebug es true.
  *
  * @param message Mensaje de log a mostrar.
  */
-export const consoleLog = (message: string): void => {
+export const consoleLog = (message: string, key = ''): void => {
+  key = key === '' ? '' : `${key}: `;
+
   if (appEnvironments.isDebug === true) {
-    console.log('Log debug true: ', message);
+    console.log(key, message);
   }
 };

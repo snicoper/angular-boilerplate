@@ -13,6 +13,14 @@ export class HomeComponent {
     return this.jwtTokenService.getName();
   }
 
+  getRoles(): string[] {
+    return this.jwtTokenService.getRoles();
+  }
+
+  logOut(): void {
+    this.jwtTokenService.logOut();
+  }
+
   handleToggleNavbar(): void {
     this.layoutService.toggleNavbar();
   }

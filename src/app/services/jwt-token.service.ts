@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { consoleLog } from './../core/debug';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
@@ -31,6 +32,8 @@ export class JwtTokenService {
     if (!token) {
       return;
     }
+
+    consoleLog(token, 'TOKEN ACTIVO');
 
     this.logOut();
     this.token = token;
