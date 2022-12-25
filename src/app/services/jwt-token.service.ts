@@ -64,7 +64,13 @@ export class JwtTokenService {
   }
 
   getToken(): string {
-    return this.token && !this.isTokenExpired ? this.token : '';
+    if (!this.token || this.isExpired()) {
+      this.logOut();
+
+      return '';
+    }
+
+    return this.token;
   }
 
   logOut(): void {
