@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { JwtTokenService } from './../../services/jwt-token.service';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(private sidebarService: SidebarService, private jwtTokenService: JwtTokenService) {
     this.sidebarState = sidebarService.sidebarStateValue;
 
     this.eventListener();
@@ -25,6 +26,14 @@ export class SidebarComponent implements OnDestroy {
 
   handleClick(): void {
     this.sidebarService.toggle();
+  }
+
+  handleLogOut(): void {
+    this.jwtTokenService.logOut();
+  }
+
+  getAuthStatus(): boolean {
+    return this.jwtTokenService.isAuthValue;
   }
 
   private eventListener(): void {
