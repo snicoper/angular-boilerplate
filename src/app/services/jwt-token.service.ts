@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { consoleLog } from './../core/debug';
@@ -11,7 +12,7 @@ export class JwtTokenService {
   private isTokenExpired: boolean;
   private auth$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private route: Router, private localStorageService: LocalStorageService) {
     const token = this.localStorageService.get('token') as string;
     this.setToken(token);
   }
@@ -118,11 +119,15 @@ export class JwtTokenService {
     return this.tokenDecode[key];
   }
 
-  logOut(): void {
+  logOut(redirectToLogin = false): void {
     this.setAuthValue(false);
     this.localStorageService.remove('token');
     this.token = '';
     this.tokenDecode = {};
     this.isTokenExpired = true;
+
+    if (redirectToLogin) {
+      this.route.navigateByUrl('auth/login');
+    }
   }
 }

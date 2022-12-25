@@ -18,7 +18,7 @@ export class HomeComponent {
   }
 
   logOut(): void {
-    this.jwtTokenService.logOut();
+    this.jwtTokenService.logOut(true);
   }
 
   handleToggleNavbar(): void {
