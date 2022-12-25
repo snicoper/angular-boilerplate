@@ -18,6 +18,7 @@ export class LoginComponent {
   submitted = false;
   invalidLogin = false;
   formTypes = FormInputTypes;
+  loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +32,7 @@ export class LoginComponent {
   }
 
   public handleSubmit(): void {
+    this.loading = true;
     this.submitted = true;
     this.invalidLogin = false;
 

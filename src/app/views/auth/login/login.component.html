@@ -37,7 +37,11 @@
         </aw-form-floating>
         <!-- end password -->
 
-        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Acceder</button>
+        <aw-btn-loading
+          [loading]="loading"
+          btnText="Acceder"
+          btnClass="w-100 btn btn-lg btn-primary mt-2"
+        ></aw-btn-loading>
         <button routerLink="/" class="w-100 btn btn-lg btn-primary mt-2" type="submit">Volver</button>
       </form>
     </aw-card>
