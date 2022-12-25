@@ -1,0 +1,17 @@
+<button [disabled]="loading" [class]="btnClass" [type]="btnType">
+  <ng-container *ngIf="!loading">
+    <span>
+      <ng-content></ng-content>
+      {{ btnText | translate }}
+    </span>
+  </ng-container>
+
+  <aw-spinner
+    [loading]="loading"
+    [extraCss]="spinnerClass"
+    [text]="spinnerLoadingText | translate"
+    [color]="spinnerColor"
+    [size]="spinnerSize"
+  >
+  </aw-spinner>
+</button>
