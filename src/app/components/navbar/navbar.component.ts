@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { appEnvironments } from '../../core/config/_index';
+import { AuthService } from './../../services/auth.service';
 import { JwtTokenService } from './../../services/jwt-token.service';
 import { SidebarService } from './../sidebar/sidebar.service';
 
@@ -16,7 +17,11 @@ export class NavbarComponent implements OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private sidebarService: SidebarService, private jwtTokenService: JwtTokenService) {
+  constructor(
+    private sidebarService: SidebarService,
+    private jwtTokenService: JwtTokenService,
+    private authService: AuthService
+  ) {
     this.sidebarState = this.sidebarService.sidebarStateValue;
     this.eventListener();
   }
@@ -31,7 +36,7 @@ export class NavbarComponent implements OnDestroy {
   }
 
   logOut(): void {
-    this.jwtTokenService.logOut();
+    this.jwtTokenService.clean();
   }
 
   private eventListener(): void {
@@ -39,7 +44,7 @@ export class NavbarComponent implements OnDestroy {
       next: (result: boolean) => (this.sidebarState = result)
     });
 
-    this.jwtTokenService.isAuth.pipe(takeUntil(this.destroy$)).subscribe({
+    this.authService.isAuth.pipe(takeUntil(this.destroy$)).subscribe({
       next: (result: boolean) => (this.isAuth = result)
     });
   }

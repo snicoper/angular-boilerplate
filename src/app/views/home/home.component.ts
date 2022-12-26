@@ -9,6 +9,10 @@ import { LayoutService } from './../../services/layout.service';
 export class HomeComponent {
   constructor(private layoutService: LayoutService, private jwtTokenService: JwtTokenService) {}
 
+  getUserId(): string {
+    return this.jwtTokenService.getSid();
+  }
+
   getUserName(): string {
     return this.jwtTokenService.getName();
   }
@@ -18,7 +22,7 @@ export class HomeComponent {
   }
 
   logOut(): void {
-    this.jwtTokenService.logOut(true);
+    this.jwtTokenService.clean(true);
   }
 
   handleToggleNavbar(): void {

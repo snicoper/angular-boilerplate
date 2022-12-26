@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { consoleLog } from './../core/debug';
+import { AuthService } from './auth.service';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
@@ -10,23 +10,14 @@ export class JwtTokenService {
   private token: string;
   private tokenDecode: { [key: string]: any };
   private isTokenExpired: boolean;
-  private auth$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private route: Router, private localStorageService: LocalStorageService) {
+  constructor(
+    private route: Router,
+    private localStorageService: LocalStorageService,
+    private authService: AuthService
+  ) {
     const token = this.localStorageService.get('token') as string;
     this.setToken(token);
-  }
-
-  get isAuth(): Observable<boolean> {
-    return this.auth$.asObservable();
-  }
-
-  get isAuthValue(): boolean {
-    return this.auth$.getValue();
-  }
-
-  setAuthValue(value: boolean): void {
-    this.auth$.next(value);
   }
 
   setToken(token: string): void {
@@ -36,12 +27,12 @@ export class JwtTokenService {
 
     consoleLog(token, 'TOKEN ACTIVO');
 
-    this.logOut();
+    this.clean();
     this.token = token;
     this.tokenDecode = jwtDecode(token);
 
     if (!this.tokenDecode || !this.tokenDecode.hasOwnProperty('exp')) {
-      this.logOut();
+      this.clean();
 
       return;
     }
@@ -50,14 +41,14 @@ export class JwtTokenService {
       this.localStorageService.set('token', this.token);
     }
 
-    this.setAuthValue(true);
+    this.authService.logIn();
   }
 
   isExpired(): boolean {
     const expired = parseInt(this.tokenDecode['exp']);
 
     if (Date.now() >= expired * 1000) {
-      this.logOut();
+      this.clean();
 
       return true;
     }
@@ -69,7 +60,7 @@ export class JwtTokenService {
 
   getToken(): string {
     if (!this.token || this.isExpired()) {
-      this.logOut();
+      this.clean();
 
       return '';
     }
@@ -119,8 +110,8 @@ export class JwtTokenService {
     return this.tokenDecode[key];
   }
 
-  logOut(redirectToLogin = false): void {
-    this.setAuthValue(false);
+  clean(redirectToLogin = false): void {
+    this.authService.logOut();
     this.localStorageService.remove('token');
     this.token = '';
     this.tokenDecode = {};
