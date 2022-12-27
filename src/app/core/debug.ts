@@ -33,7 +33,7 @@ export const raiseError = (message: string): void => {
  * @param message Mensaje de log a mostrar.
  */
 export const consoleLog = (message: string, key = ''): void => {
-  key = key === '' ? '' : `${key}: `;
+  key = key === '' ? '' : `DEV - ${key}: `;
 
   if (appEnvironments.isDebug === true) {
     console.log(key, message);
