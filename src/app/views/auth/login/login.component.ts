@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { BadRequest, FormInputTypes } from '../../../models/types/_index';
 import { JwtTokenService } from './../../../services/jwt-token.service';
 import { AuthRestService } from './../../../services/rest/auth-rest.service';
@@ -40,21 +41,24 @@ export class LoginComponent {
       return;
     }
 
-    this.authRestService.post(this.form.value, 'login').subscribe({
-      next: (result: LoginResponse) => {
-        this.jwtTokenService.setToken(result.token);
+    this.authRestService
+      .post(this.form.value, 'login')
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: (result: LoginResponse) => {
+          this.jwtTokenService.setToken(result.token);
 
-        if (this.jwtTokenService.getToken()) {
-          const returnUrl = this.route.snapshot.params['returnUrl'] as string | '/';
-          this.router.navigateByUrl(returnUrl);
+          if (this.jwtTokenService.getToken()) {
+            const returnUrl = this.route.snapshot.params['returnUrl'] as string | '/';
+            this.router.navigateByUrl(returnUrl);
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === HttpStatusCode.Forbidden) {
+            this.invalidLogin = true;
+          }
         }
-      },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === HttpStatusCode.Forbidden) {
-          this.invalidLogin = true;
-        }
-      }
-    });
+      });
   }
 
   private buildForm(): void {
