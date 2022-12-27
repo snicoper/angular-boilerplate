@@ -1,14 +1,23 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './core/config/_index';
+import { ErrorRequestInterceptor } from './interceptors/error-request.interceptor';
 import { JwtInterceptor } from './interceptors/_index';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    })
+  ],
   providers: [
     AppConfig,
     {
@@ -17,6 +26,7 @@ import { JwtInterceptor } from './interceptors/_index';
       deps: [AppConfig],
       multi: true
     },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorRequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

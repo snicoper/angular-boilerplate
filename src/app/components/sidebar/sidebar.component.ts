@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { siteUrls } from '../../core/_index';
 import { AuthService } from './../../services/auth.service';
 import { JwtTokenService } from './../../services/jwt-token.service';
 import { SidebarService } from './sidebar.service';
@@ -12,6 +13,7 @@ import { SidebarService } from './sidebar.service';
 export class SidebarComponent implements OnDestroy {
   authState = false;
   sidebarState: boolean;
+  siteUrls = siteUrls;
 
   private destroy$ = new Subject<void>();
 

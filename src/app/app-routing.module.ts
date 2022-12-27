@@ -9,6 +9,15 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./views/auth/auth.module').then((m) => m.AuthModule)
+  },
+  {
+    path: 'errors',
+    loadChildren: () => import('./views/errors/errors.module').then((m) => m.ErrorsModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'error/404',
+    pathMatch: 'full'
   }
 ];
 

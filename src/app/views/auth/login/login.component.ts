@@ -33,13 +33,14 @@ export class LoginComponent {
   }
 
   public handleSubmit(): void {
-    this.loading = true;
     this.submitted = true;
     this.invalidLogin = false;
 
     if (this.form.invalid) {
       return;
     }
+
+    this.loading = true;
 
     this.authRestService
       .post(this.form.value, 'login')
