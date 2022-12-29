@@ -6,11 +6,9 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private theme$ = new BehaviorSubject<ThemeColor>(ThemeColor.auto);
+  private colorStorage: ThemeColor;
 
-  constructor(private localStorageService: LocalStorageService) {
-    const colorStorage = (this.localStorageService.get('theme') as ThemeColor) || ThemeColor.auto;
-    this.setTheme(colorStorage);
-  }
+  constructor(private localStorageService: LocalStorageService) {}
 
   get theme(): Observable<ThemeColor> {
     return this.theme$.asObservable();
@@ -20,8 +18,24 @@ export class ThemeService {
     return this.theme$.getValue();
   }
 
+  initialize(): void {
+    this.colorStorage = (this.localStorageService.get('theme') as ThemeColor) || ThemeColor.auto;
+
+    if (this.colorStorage === ThemeColor.auto) {
+      // Establecer el color del sistema.
+      this.colorStorage = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? ThemeColor.dark
+        : ThemeColor.light;
+    }
+
+    this.setTheme(this.colorStorage);
+  }
+
   setTheme(theme: ThemeColor): void {
-    this.localStorageService.set('theme', theme);
+    if (!this.colorStorage || theme !== this.themeValue) {
+      this.localStorageService.set('theme', theme);
+    }
+
     document.documentElement.setAttribute('data-bs-theme', theme);
     this.theme$.next(theme);
   }
