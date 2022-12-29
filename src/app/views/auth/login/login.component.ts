@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { BadRequest, FormInputTypes } from '../../../models/types/_index';
+import { siteUrls } from './../../../core/urls/site-urls';
 import { JwtTokenService } from './../../../services/jwt-token.service';
 import { AuthRestService } from './../../../services/rest/auth-rest.service';
 import { LoginResponse } from './login-response';
@@ -20,6 +21,7 @@ export class LoginComponent {
   invalidLogin = false;
   formTypes = FormInputTypes;
   loading = false;
+  siteUrls = siteUrls;
 
   constructor(
     private fb: FormBuilder,

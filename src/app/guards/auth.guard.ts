@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { siteUrls } from '../core/urls/_index';
 import { JwtTokenService } from './../services/jwt-token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private jwtTokenService: JwtTokenService) {}
+  constructor(private router: Router, private jwtTokenService: JwtTokenService, private toastr: ToastrService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (!this.jwtTokenService.getToken()) {
+      this.toastr.error('Requiere autorización para acceder.');
       this.router.navigate([siteUrls.login], { queryParams: { returnUrl: state.url } });
 
       return false;
@@ -16,20 +18,20 @@ export class AuthGuard implements CanActivate {
 
     const userRoles = this.jwtTokenService.getRoles();
     const { roles } = route.data;
-    let isValid = true;
 
     if (!roles) {
       return true;
     }
 
-    roles.forEach((role: string) => {
+    for (let role of roles) {
       if (!userRoles.includes(role)) {
+        this.toastr.error('Requiere permisos para acceder.');
         this.router.navigate([siteUrls.login], { queryParams: { returnUrl: state.url } });
 
-        isValid = false;
+        return false;
       }
-    });
+    }
 
-    return isValid;
+    return true;
   }
 }

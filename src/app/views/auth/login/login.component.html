@@ -42,7 +42,8 @@
           btnText="Acceder"
           btnClass="w-100 btn btn-lg btn-primary mt-2"
         ></aw-btn-loading>
-        <button routerLink="/" class="w-100 btn btn-lg btn-primary mt-2" type="submit">Volver</button>
+
+        <button [routerLink]="[siteUrls.home]" class="w-100 btn btn-lg btn-primary mt-2" type="button">Volver</button>
       </form>
     </aw-card>
   </div>
