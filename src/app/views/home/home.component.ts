@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ThemeColor } from '../../core/constants/_index';
+import { ThemeColorService } from '../../services/_index';
 import { JwtTokenService } from './../../services/jwt-token.service';
 import { LayoutService } from './../../services/layout.service';
-import { ThemeService } from './../../services/theme.service';
 
 @Component({
   selector: 'aw-home',
@@ -12,7 +12,7 @@ export class HomeComponent {
   constructor(
     private layoutService: LayoutService,
     private jwtTokenService: JwtTokenService,
-    private themeService: ThemeService
+    private themeColorService: ThemeColorService
   ) {}
 
   getUserId(): string {
@@ -44,7 +44,7 @@ export class HomeComponent {
   }
 
   handleChangeThemeColor(): void {
-    const color = this.themeService.themeValue === ThemeColor.dark ? ThemeColor.light : ThemeColor.dark;
-    this.themeService.setTheme(color);
+    const color = this.themeColorService.themeValue === ThemeColor.dark ? ThemeColor.light : ThemeColor.dark;
+    this.themeColorService.setTheme(color);
   }
 }

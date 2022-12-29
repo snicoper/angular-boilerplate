@@ -4,7 +4,7 @@ import { ThemeColor } from '../core/constants/theme-color';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
-export class ThemeService {
+export class ThemeColorService {
   private theme$ = new BehaviorSubject<ThemeColor>(ThemeColor.auto);
   private colorStorage: ThemeColor;
 

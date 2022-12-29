@@ -291,6 +291,7 @@ $cyans: (
 
 // scss-docs-start theme-color-variables
 $primary: $indigo-700 !default;
+$primary-alter: lighten($primary, 17);
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -303,6 +304,7 @@ $dark: $gray-900 !default;
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary": $primary,
+  "primary-alter": $primary-alter,
   "secondary": $secondary,
   "success": $success,
   "info": $info,
@@ -340,6 +342,11 @@ $danger-border-subtle: $red-200 !default;
 $light-border-subtle: $gray-200 !default;
 $dark-border-subtle: $gray-500 !default;
 
+// Prefix for :root CSS variables
+
+$variable-prefix: bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
+$prefix: $variable-prefix !default;
+
 // Options.
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -362,6 +369,8 @@ $enable-deprecation-messages: true !default;
 $body-bg: #f7f9fb !default;
 $body-color: $gray-900 !default;
 $headings-color: $primary !default;
+$body-tertiary-color: rgba($body-color, 0.5) !default;
+$body-tertiary-bg: $gray-200 !default;
 
 // Links.
 $link-hover-decoration: none !default;
@@ -382,3 +391,8 @@ $table-accent-bg: rgba($black, 0.05) !default;
 $table-hover-color: $table-color !default;
 $table-hover-bg: lighten($primary, 55) !default;
 $table-active-bg: $table-hover-bg !default;
+
+// Components
+//
+$component-active-color: $white !default;
+$component-active-bg: lighten($primary, 17) !default;

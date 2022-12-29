@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ThemeService } from './../../services/theme.service';
+import { ThemeColorService } from '../../services/_index';
 
 /**
  * Configuración inicial de la aplicación.
  */
 @Injectable()
 export class AppConfig {
-  constructor(private themeService: ThemeService) {
-    this.themeService.initialize();
+  constructor(private themeColorService: ThemeColorService) {
+    this.themeColorService.initialize();
   }
 
   load(): Promise<boolean> {
