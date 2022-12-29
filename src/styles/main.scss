@@ -5,6 +5,9 @@
 // Bootstrap.
 @import "bootstrap/scss/bootstrap";
 
+// Vendor.
+@import "vendor/main";
+
 // Font-awesome.
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 @import "@fortawesome/fontawesome-free/scss/regular";
@@ -20,10 +23,8 @@
 // Mixins.
 @import "mixins/main";
 
-@import "base";
-
 // Components.
 @import "components/main.scss";
 
-// Vendor.
-@import "vendor/main";
+// Base styles.
+@import "base";
