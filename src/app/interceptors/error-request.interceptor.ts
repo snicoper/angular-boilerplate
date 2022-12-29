@@ -12,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { debugErrors } from '../core/debug';
-import { siteUrls } from '../core/site-urls';
 import { toastForNotificationErrors } from '../core/toast-http-errors';
+import { siteUrls } from '../core/urls/_index';
 
 @Injectable()
 export class ErrorRequestInterceptor implements HttpInterceptor {

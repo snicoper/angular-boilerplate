@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { siteUrls } from './../core/site-urls';
+import { siteUrls } from '../core/urls/_index';
 import { JwtTokenService } from './../services/jwt-token.service';
 
 @Injectable({ providedIn: 'root' })

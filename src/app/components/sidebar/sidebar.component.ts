@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { siteUrls } from '../../core/_index';
+import { siteUrls } from '../../core/urls/_index';
 import { AuthService } from './../../services/auth.service';
 import { JwtTokenService } from './../../services/jwt-token.service';
 import { SidebarService } from './sidebar.service';
