@@ -290,7 +290,7 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary: #2d2d88 !default;
+$primary: $indigo-700 !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
