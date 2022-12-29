@@ -1,4 +1,4 @@
-<div class="border-right navbar-dark bg-dark" id="sidebar-wrapper" [ngClass]="sidebarState ? 'show' : 'hide'">
+<div class="border-right" id="sidebar-wrapper" [ngClass]="sidebarState ? 'show' : 'hide'">
   <div class="sidebar-heading">Sidebar</div>
   <div class="list-group list-group-flush">
     <a [routerLink]="[siteUrls.home]" routerLinkActive="" class="list-group-item list-group-item-action">Dashboard</a>
@@ -11,9 +11,7 @@
       class="list-group-item list-group-item-action"
       >Log out</a
     >
-    <a [routerLink]="[siteUrls.login]" routerLinkActive="active" class="list-group-item list-group-item-action">
-      Login
-    </a>
+    <a [routerLink]="[siteUrls.login]" routerLinkActive="" class="list-group-item list-group-item-action"> Login </a>
     <a (click)="handleClick()" class="list-group-item list-group-item-action cursor-pointer">Status {{ authState }}</a>
   </div>
 </div>
