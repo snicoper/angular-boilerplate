@@ -3,8 +3,6 @@
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
-  color: $text-color-alter;
-  background-color: $color-alter;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
@@ -21,16 +19,11 @@
 
   .list-group-item {
     cursor: pointer;
-    background-color: $color-alter;
-    color: $text-color-alter;
 
     &.active {
-      background-color: lighten($color-alter, 5);
     }
 
     &:hover {
-      background-color: darken($color-alter, 2);
-      color: darken($text-color-alter, 15);
     }
   }
 }

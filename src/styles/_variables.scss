@@ -1,20 +1,6 @@
 @import "variables-bootstrap";
 
 /**
- * Dropdowns
- */
-
-/** Color fondo y texto al hacer focus en los dropdowns. */
-$focus-item-bg: lighten($primary, 25);
-$focus-item-text: $white;
-
-/**
  * Navbar
  */
 $navbar-margin-top: 53px;
-
-/**
- * Colors.
- */
-$color-alter: lighten($primary, 5);
-$text-color-alter: white;
