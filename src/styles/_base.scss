@@ -16,15 +16,3 @@
 .shadow-md {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
-
-.fade-in {
-  @include fade-in-variant(0.5s);
-}
-
-.fade-in-fast {
-  @include fade-in-variant(0.3s);
-}
-
-.fade-in-slow {
-  @include fade-in-variant(0.7s);
-}
