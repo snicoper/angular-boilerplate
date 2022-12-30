@@ -6,8 +6,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './core/config/_index';
-import { ErrorRequestInterceptor } from './interceptors/error-request.interceptor';
-import { JwtInterceptor } from './interceptors/_index';
+import { ApiResultRequestInterceptor, ErrorRequestInterceptor, JwtInterceptor } from './interceptors/_index';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +28,8 @@ import { JwtInterceptor } from './interceptors/_index';
       multi: true
     },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorRequestInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiResultRequestInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

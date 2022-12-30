@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ThemeColor } from '../core/constants/theme-color';
+import { ThemeColor } from '../core/constants/_index';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
