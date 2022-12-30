@@ -61,6 +61,8 @@ export class ErrorRequestInterceptor implements HttpInterceptor {
 
   /** Errores 500. */
   private handleUnknownError(): void {
-    this.toastrService.error('Error critico');
+    console.log('ERROR!!!');
+    this.toastrService.error(`Ha ocurrido un error, por favor si el problema persiste póngase en
+      contacto con la administración.`);
   }
 }
