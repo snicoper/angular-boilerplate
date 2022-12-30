@@ -13,6 +13,7 @@ import { SidebarService } from './../sidebar/sidebar.service';
 })
 export class NavbarComponent implements OnDestroy {
   isAuth = false;
+  userName = '';
   sidebarState: boolean;
   siteName = appEnvironments.siteName;
   siteUrls = siteUrls;
@@ -47,7 +48,10 @@ export class NavbarComponent implements OnDestroy {
     });
 
     this.authService.isAuth.pipe(takeUntil(this.destroy$)).subscribe({
-      next: (result: boolean) => (this.isAuth = result)
+      next: (result: boolean) => {
+        this.isAuth = result;
+        this.userName = this.jwtTokenService.getName();
+      }
     });
   }
 }
