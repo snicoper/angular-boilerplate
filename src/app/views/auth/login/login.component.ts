@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { apiUrls, siteUrls } from '../../../core/urls/_index';
 import { BadRequest, FormInputTypes } from '../../../models/types/_index';
-import { siteUrls } from './../../../core/urls/site-urls';
-import { JwtTokenService } from './../../../services/jwt-token.service';
-import { AuthRestService } from './../../../services/rest/auth-rest.service';
+import { AuthRestService } from '../../../services/rest/_index';
+import { JwtTokenService } from '../../../services/_index';
 import { LoginResponse } from './login-response';
 
 @Component({
@@ -45,7 +45,7 @@ export class LoginComponent {
     this.loading = true;
 
     this.authRestService
-      .post(this.form.value, 'login')
+      .post(this.form.value, apiUrls.login)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
         next: (result: LoginResponse) => {
