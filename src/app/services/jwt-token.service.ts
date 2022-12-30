@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
-import { consoleLog } from '../core/_index';
+import { consoleLog } from '../core/utils/_index';
 import { AuthService } from './auth.service';
 import { LocalStorageService } from './local-storage.service';
 

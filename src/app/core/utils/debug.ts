@@ -1,5 +1,6 @@
-import { appEnvironments } from './config/app-environments';
 /** Errores que solo se mostraran en desarrollo. */
+
+import { appEnvironments } from '../config/_index';
 
 /**
  * Muestra una lista de errores solo si se esta en desarrollo.

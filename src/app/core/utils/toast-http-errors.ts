@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { ValidationErrors } from './constants/_index';
+import { ValidationErrors } from '../constants/_index';
 
 /**
  * Comprueba si ha habido errores en la respuesta http y en caso de haberlos,
