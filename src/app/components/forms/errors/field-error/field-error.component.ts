@@ -36,10 +36,17 @@ export class FieldErrorComponent implements OnInit {
     return !!(validateRules || (this.submitted && this.control?.errors));
   }
 
-  getBadRequestErrors(): string | void | undefined {
+  getBadRequestErrors(): string {
     if (this.badRequest && this.badRequest.status === HttpStatusCode.BadRequest) {
       const index = this.badRequest.errors.indexOf(this.fieldName);
-      return this.badRequest.errors[index];
+
+      return this.badRequest.errors[index] || '';
     }
+
+    return '';
+  }
+
+  getControlErrorByErrorName(errorName: string): ValidationErrors | null {
+    return this.control.errors && errorName in this.control.errors ? this.control.errors[errorName] : null;
   }
 }

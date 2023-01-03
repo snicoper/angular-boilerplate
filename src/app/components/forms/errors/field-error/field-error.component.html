@@ -2,15 +2,15 @@
   <div class="small text-danger mt-1 pl-1">
     <!-- Errores Angular. -->
     <span [ngSwitch]="true">
-      <ng-container *ngSwitchCase="control?.errors?.required">
+      <ng-container *ngSwitchCase="getControlErrorByErrorName('required')">
         <div>Campo requerido</div>
       </ng-container>
 
-      <ng-container *ngSwitchCase="control?.errors?.email">
+      <ng-container *ngSwitchCase="getControlErrorByErrorName('email')">
         <div></div>
       </ng-container>
 
-      <ng-container *ngSwitchCase="control?.errors?.noPasswordMatch">
+      <ng-container *ngSwitchCase="getControlErrorByErrorName('noPasswordMatch')">
         <div></div>
       </ng-container>
 
